@@ -59,8 +59,8 @@ class XlsCSV(object):
 
     def _save_csv(self, filename):
         if not hasattr(self.buff, 'save') and hasattr(self.buff, 'getvalue'):
-            with codecs.open(filename, mode='w', encoding=self.encoding) as f:
-                f.write(self.buff.getvalue().decode(self.encoding))
+            with open(filename, mode='w') as _file:
+                _file.write(self.buff.getvalue())
 
     def _save_xls(self, filename):
         self.wb.save(filename)
@@ -83,8 +83,8 @@ if __name__ == '__main__':
     for i in items:
         xls.writerow(i)
 
-    with codecs.open("sample.xlsx", 'wb', encoding=xls.encoding) as f:
-        f.write(xls.stream.decode(xls.encoding))
+    with open("sample.xlsx", 'wb') as f:
+        f.write(xls.stream)
 
     # xls.save('sample.xlsx')
 
@@ -94,4 +94,10 @@ if __name__ == '__main__':
     for i in items:
         csv.writerow(i)
 
-    # csv.save('sample.csv')
+    csv = XlsCSV(fmt=Format.CSV)
+    csv.writerow(header)
+
+    for i in items:
+        csv.writerow(i)
+
+    csv.save('sample2.csv')
