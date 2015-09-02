@@ -83,8 +83,8 @@ if __name__ == '__main__':
     for i in items:
         xls.writerow(i)
 
-    with codecs.open("sample.xlsx", 'wb', encoding='ISO-8859-1') as f:
-        f.write(xls.stream.decode('ISO-8859-1'))
+    with codecs.open("sample.xlsx", 'wb', encoding=xls.encoding) as f:
+        f.write(xls.stream.decode(xls.encoding))
 
     # xls.save('sample.xlsx')
 
