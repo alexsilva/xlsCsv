@@ -17,7 +17,7 @@ class XlsCSV(object):
     :keyword encoding data encoding.
     """
 
-    def __init__(self, fmt='csv', *args, **kwargs):
+    def __init__(self, fmt=Format.CSV, *args, **kwargs):
         getattr(self, "_format_" + fmt)(*args, **kwargs)
         self.format = fmt
 
