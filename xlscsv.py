@@ -58,7 +58,7 @@ class XlsCSV(object):
         return buff.getvalue()
 
     def _save_csv(self, filename):
-        if not hasattr(self.buff, 'save'):
+        if not hasattr(self.buff, 'save') and hasattr(self.buff, 'getvalue'):
             with codecs.open(filename, mode='w', encoding=self.encoding) as f:
                 f.write(self.buff.getvalue().decode(self.encoding))
 
@@ -88,11 +88,10 @@ if __name__ == '__main__':
 
     # xls.save('sample.xlsx')
 
-    csv = XlsCSV(fmt=Format.CSV)
+    csv = XlsCSV(fmt=Format.CSV, file=codecs.open("sample.csv", mode='w'))
     csv.writerow(header)
 
     for i in items:
         csv.writerow(i)
 
-
-    csv.save('sample.csv')
+    # csv.save('sample.csv')
