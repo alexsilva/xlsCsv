@@ -88,11 +88,12 @@ if __name__ == '__main__':
 
     # xls.save('sample.xlsx')
 
-    csv = XlsCSV(fmt=Format.CSV, file=codecs.open("sample.csv", mode='w'))
-    csv.writerow(header)
+    with open("sample.csv", mode='w') as _file:
+        csv = XlsCSV(fmt=Format.CSV, file=_file)
+        csv.writerow(header)
 
-    for i in items:
-        csv.writerow(i)
+        for i in items:
+            csv.writerow(i)
 
     csv = XlsCSV(fmt=Format.CSV)
     csv.writerow(header)
