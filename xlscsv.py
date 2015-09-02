@@ -68,6 +68,7 @@ class XlsCSV(object):
 
 if __name__ == '__main__':
     # sample, tests...
+    header = ["fruit", "tree"]
     items = (
         [u"Cajá", "Cajazeira"],
         [u"Cambucá", "Cambucazeiro"],
@@ -77,6 +78,7 @@ if __name__ == '__main__':
     )
 
     xls = XlsCSV(fmt=Format.XLS, encoding='ISO-8859-1')
+    xls.writerow(header)
 
     for i in items:
         xls.writerow(i)
@@ -87,6 +89,7 @@ if __name__ == '__main__':
     # xls.save('sample.xlsx')
 
     csv = XlsCSV(fmt=Format.CSV)
+    csv.writerow(header)
 
     for i in items:
         csv.writerow(i)
