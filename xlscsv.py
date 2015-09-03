@@ -1,7 +1,7 @@
 # coding=utf-8
-from openpyxl import Workbook
 from cStringIO import StringIO
-import codecs
+
+from openpyxl import Workbook
 import unicodecsv
 
 
