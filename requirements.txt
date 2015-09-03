@@ -1,2 +1,2 @@
-unicodecsv
-openpyxl
+unicodecsv==0.13.0
+openpyxl==2.2.5
